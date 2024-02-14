@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="0dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    tools:context=".LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rounded_top"
+        android:padding="16dp">
+    <ImageView
+        android:id="@+id/closeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Title Text -->
+    <TextView
+        android:id="@+id/loginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Login or Sign Up"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_info"/>
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Please select your preferred method
+to continue setting up your account"
+            android:textSize="14dp"
+            android:padding="10dp"
+            android:paddingEnd="50dp"
+            android:paddingStart="50dp"
+            android:textAlignment="center"
+            android:textColor="#797979"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginTitle"
+            app:layout_constraintBottom_toTopOf="@id/emailButton"/>
+
+    <!-- Email Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/emailButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_get_started"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:textAllCaps="false"
+        android:text="Continue with Email"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginTitle"
+        app:layout_constraintBottom_toTopOf="@id/phoneButton"/>
+
+    <!-- Phone Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/phoneButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Continue with Phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/btn_no_color"
+        app:layout_constraintTop_toBottomOf="@id/emailButton"
+        app:layout_constraintBottom_toTopOf="@id/ll_login"/>
+
+    <LinearLayout
+        android:id="@+id/ll_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/phoneButton"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_terms_cond"
+        >
+    <!-- Google Button -->
+    <ImageButton
+        android:id="@+id/googleButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_stroke"
+        android:layout_weight="1"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_google"
+        android:padding="10dp"
+        />
+
+
+    <!-- Apple Button -->
+    <ImageButton
+        android:id="@+id/appleButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_stroke"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_apple"
+        android:padding="10dp"
+        />
+    </LinearLayout>
+
+    <!-- Terms and Conditions -->
+    <TextView
+        android:id="@+id/tv_terms_cond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If you are creating a new account,\nTerms and Conditions and Privacy Policy will apply."
+        android:gravity="center"
+        android:textColor="#797979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_login"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
