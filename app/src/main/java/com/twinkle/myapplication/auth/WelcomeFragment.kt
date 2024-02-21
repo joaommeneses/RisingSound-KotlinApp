@@ -1,4 +1,4 @@
-package com.twinkle.myapplication
+package com.twinkle.myapplication.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater

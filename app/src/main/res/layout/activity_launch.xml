@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3A1F62"
-    tools:context=".LaunchActivity">
+    tools:context=".auth.LaunchActivity">
 
         <ImageView
             android:id="@+id/iv_logotype"
@@ -13,11 +13,10 @@
             android:layout_height="200dp"
             android:src="@drawable/logo"
             android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Fragment container for WelcomeFragment -->
         <FrameLayout

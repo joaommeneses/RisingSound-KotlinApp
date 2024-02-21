@@ -1,8 +1,9 @@
-package com.twinkle.myapplication
+package com.twinkle.myapplication.auth
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.twinkle.myapplication.databinding.ActivityDoneBinding
+import com.twinkle.myapplication.AppContext
 import com.twinkle.myapplication.databinding.ActivityUserTypeBinding
 
 class UserTypeActivity : AppCompatActivity() {
@@ -14,21 +15,23 @@ class UserTypeActivity : AppCompatActivity() {
         binding = ActivityUserTypeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //start new activity
+        // Set the listeners for the buttons
         binding.buttonListener.setOnClickListener {
-            //listener
-            startDoneActivity("#7B2CBF")
+            startMainActivity("Listener")
         }
 
         binding.buttonMusician.setOnClickListener {
-            //musician
-            startDoneActivity("#3A1F62")
+            startMainActivity("Musician")
         }
     }
 
-    private fun startDoneActivity(color: String) {
-        val intent = Intent(this, ActivityDone::class.java)
-        intent.putExtra("BUTTON_COLOR", color)
+    private fun startMainActivity(userType: String) {
+        val intent = Intent(this, ActivityDone::class.java).apply {
+            putExtra("USER_TYPE", userType)
+        }
+        //store user type (can be accessed in all application)
+        val app = application as AppContext
+        app.userType = userType // "Listener" or "Musician"
         startActivity(intent)
     }
 }

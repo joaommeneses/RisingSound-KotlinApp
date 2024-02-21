@@ -1,17 +1,17 @@
-package com.twinkle.myapplication
+package com.twinkle.myapplication.auth
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.LayerDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import com.twinkle.myapplication.AppContext
+import com.twinkle.myapplication.MainActivity
+import com.twinkle.myapplication.R
 import com.twinkle.myapplication.databinding.ActivityDoneBinding
 
 class ActivityDone : AppCompatActivity() {
@@ -23,19 +23,20 @@ class ActivityDone : AppCompatActivity() {
         binding = ActivityDoneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // get the color passed from the previous activity
-        val colorStr = intent.getStringExtra("BUTTON_COLOR") ?: "#000000" // Default to black if no color provided
+        val userType = intent.getStringExtra("USER_TYPE") ?: "Listener" // Default to Listener if no user type is provided
+        val colorRes = if (userType == "Listener") R.color.listener_color else R.color.musician_color
+        val color = ContextCompat.getColor(this, colorRes)
 
-        // get the circle and checkmark drawables
+        // Get the circle and checkmark drawables
         val circleDrawable = ContextCompat.getDrawable(this, R.drawable.btn_circle_done)?.mutate() // Call mutate to not share its state with any other drawable
         val checkDrawable = ContextCompat.getDrawable(this, R.drawable.ic_check)
 
-        // wrap and tint the circle drawable
+        // Wrap and tint the circle drawable
         if (circleDrawable != null) {
-            DrawableCompat.setTint(DrawableCompat.wrap(circleDrawable), Color.parseColor(colorStr))
+            DrawableCompat.setTint(DrawableCompat.wrap(circleDrawable), color)
         }
 
-        // create a new LayerDrawable with the circle and checkmark
+        // Create a new LayerDrawable with the circle and checkmark
         val layers = if (circleDrawable != null && checkDrawable != null) {
             arrayOf<Drawable>(circleDrawable, checkDrawable)
         } else {
@@ -43,23 +44,28 @@ class ActivityDone : AppCompatActivity() {
         }
         val layerDrawable = LayerDrawable(layers)
 
-        // set the LayerDrawable as the source for the ImageView
+        // Set the LayerDrawable as the source for the ImageView
         binding.ivCircleWithCheck.setImageDrawable(layerDrawable)
 
-        // post a delayed Runnable to start the LandingPageActivity after 3 seconds
+        // Post a delayed Runnable to start the LandingPageActivity after 1.5 seconds
         Handler(Looper.getMainLooper()).postDelayed({
-            // create an intent to start LandingPageActivity
-            val intent = Intent(this, LandingPage::class.java)
-            // set flags to clear the activity stack and start a new task
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            // optionally add a transition animation
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-            // finish the current activity
-            finish()
-        }, 3000) // Delay in milliseconds
+            startMainActivity(userType)
+        }, 1500) // Delay in milliseconds
+    }
+
+    private fun startMainActivity(userType: String) {
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtra("USER_TYPE", userType)
+        }
+        // Store user type in the global application context
+        val app = application as AppContext
+        app.userType = userType // "Listener" or "Musician"
+        startActivity(intent)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        finish()
     }
 }
+
 
 
 

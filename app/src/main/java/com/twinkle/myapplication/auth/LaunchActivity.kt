@@ -1,9 +1,10 @@
-package com.twinkle.myapplication
+package com.twinkle.myapplication.auth
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.twinkle.myapplication.R
 import com.twinkle.myapplication.databinding.ActivityLaunchBinding
 
 class LaunchActivity : AppCompatActivity() {
@@ -26,10 +27,13 @@ class LaunchActivity : AppCompatActivity() {
             if(isDestroyed || isFinishing) {
                 return@postDelayed
             }
-
             // Slide up the Welcome Fragment
             val welcomeFragment = WelcomeFragment()
             supportFragmentManager.beginTransaction()
+                .setCustomAnimations(
+                    R.anim.slide_up_login, // Enter animation for the LoginFragment
+                    0 // No exit animation for the previous fragment
+                )
                 .replace(R.id.welcomeFragmentContainer, welcomeFragment)
                 .commit()
 
