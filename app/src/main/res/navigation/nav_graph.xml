@@ -5,16 +5,61 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragmentListenerLandingPage">
 
+    <!-- Listener Landing Page -->
     <fragment
         android:id="@+id/fragmentListenerLandingPage"
         android:name="com.twinkle.myapplication.listener.LPListenerFragment"
         android:label="Listener Landing Page"
         tools:layout="@layout/fragment_land_page_listener" />
 
+    <!-- Musician Landing Page -->
     <fragment
         android:id="@+id/fragmentMusicianLandingPage"
         android:name="com.twinkle.myapplication.musician.LPMusicianFragment"
         android:label="Musician Landing Page"
         tools:layout="@layout/fragment_land_page_musician" />
 
+    <!-- Listener Profile Fragment -->
+    <fragment
+        android:id="@+id/fragmentListenerProfile"
+        android:name="com.twinkle.myapplication.listener.ProfileFragment"
+        android:label="Listener Profile"
+        tools:layout="@layout/fragment_profile_listener" />
+
+    <!-- Musician Profile Fragment -->
+    <fragment
+        android:id="@+id/fragmentMusicianProfile"
+        android:name="com.twinkle.myapplication.musician.ProfileFragment"
+        android:label="Musician Profile"
+        tools:layout="@layout/fragment_profile_musician" />
+
+    <!-- Listener Search Fragment -->
+    <fragment
+        android:id="@+id/fragmentListenerSearch"
+        android:name="com.twinkle.myapplication.listener.SearchFragment"
+        android:label="Listener Search"
+        tools:layout="@layout/fragment_search_listener" />
+
+    <!-- Musician Search Fragment -->
+    <fragment
+        android:id="@+id/fragmentMusicianSearch"
+        android:name="com.twinkle.myapplication.musician.SearchFragment"
+        android:label="Musician Search"
+        tools:layout="@layout/fragment_search_musician" />
+
+    <!-- Listener Private Messages Fragment -->
+    <fragment
+        android:id="@+id/fragmentListenerPrivateMessages"
+        android:name="com.twinkle.myapplication.listener.PrivateMessagesFragment"
+        android:label="Listener Private Messages"
+        tools:layout="@layout/fragment_private_messages_listener" />
+
+    <!-- Musician Private Messages Fragment -->
+    <fragment
+        android:id="@+id/fragmentMusicianPrivateMessages"
+        android:name="com.twinkle.myapplication.musician.PrivateMessagesFragment"
+        android:label="Musician Private Messages"
+        tools:layout="@layout/fragment_private_messages_musician" />
+
+    <!-- Add other fragments similarly, defining IDs, names, and layouts -->
 </navigation>
