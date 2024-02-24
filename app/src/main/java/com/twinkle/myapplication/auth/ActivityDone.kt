@@ -57,6 +57,7 @@ class ActivityDone : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java).apply {
             putExtra("USER_TYPE", userType)
         }
+        print(userType)
         // Store user type in the global application context
         val app = application as AppContext
         app.userType = userType // "Listener" or "Musician"

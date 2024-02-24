@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         // Retrieve the user type passed from the previous activity
         userType = intent.getStringExtra("USER_TYPE") ?: "Listener" // Default to "Listener" if not provided
-
+        print("MAIN ACTIVITY $userType")
         // Set the bottom navigation view's selected listener
         binding.bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     val searchDestId = if (userType == "Listener") {
                         R.id.fragmentListenerSearch
                     } else {
-                        R.id.fragmentMusicianSearch
+                        R.id.fragmentListenerSearch //Right now use same search page. no need to duplicate pages
                     }
                     navController.navigate(searchDestId)
                     true // Return true to display the item as the selected item
@@ -72,11 +72,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if(userType == "Listener"){
-            // Manually trigger the initial selection if needed
-            binding.bottomNavigation.selectedItemId = R.id.fragmentListenerLandingPage
+            navController.navigate(R.id.fragmentListenerLandingPage)
         }else{
-            binding.bottomNavigation.selectedItemId = R.id.fragmentMusicianLandingPage
+            navController.navigate(R.id.fragmentMusicianLandingPage)
         }
-
     }
 }

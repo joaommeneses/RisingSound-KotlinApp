@@ -17,10 +17,12 @@ class UserTypeActivity : AppCompatActivity() {
 
         // Set the listeners for the buttons
         binding.buttonListener.setOnClickListener {
+            print("LISTENER")
             startMainActivity("Listener")
         }
 
         binding.buttonMusician.setOnClickListener {
+            print("MUSICIAN")
             startMainActivity("Musician")
         }
     }
