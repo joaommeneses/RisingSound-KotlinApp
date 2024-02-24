@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_musician"
+            android:fontFamily="@font/merriweather"
             android:paddingLeft="50dp"
             android:paddingTop="16dp"
             android:paddingRight="50dp"
@@ -42,6 +43,7 @@
             android:paddingTop="16dp"
             android:paddingRight="50dp"
             android:paddingBottom="16dp"
+            android:fontFamily="@font/merriweather"
             android:text="Listener"
             android:textAllCaps="false"
             android:textColor="@color/white" />

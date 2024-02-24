@@ -35,6 +35,7 @@
             android:text="Cancel"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/merriweather"
             android:gravity="center_vertical"
             app:layout_constraintStart_toEndOf="@id/search_bar"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +44,6 @@
             android:textStyle="bold"
             android:textSize="16dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ListView
         android:id="@+id/lv_search_results"
         android:layout_width="match_parent"

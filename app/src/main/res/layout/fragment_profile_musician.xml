@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:text="joãosilva_"
             android:textColor="@color/white"
+            android:fontFamily="@font/merriweather"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +75,7 @@
             android:id="@+id/btn_edit_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/merriweather"
             android:background="@drawable/btn_edit_profile_musician"
             android:text="Edit Profile"
             android:layout_marginStart="50dp"
@@ -113,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text="1200"
+                android:fontFamily="@font/merriweather"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -120,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:text="Followers"
+                android:fontFamily="@font/merriweather"
                 android:textColor="@color/black" />
         </LinearLayout>
             <LinearLayout
@@ -138,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="53"
+                    android:fontFamily="@font/merriweather"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -145,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
                     android:text="Following"
+                    android:fontFamily="@font/merriweather"
                     android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
@@ -161,6 +167,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="5"
+                    android:fontFamily="@font/merriweather"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -168,6 +175,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
                     android:text="Favourites"
+                    android:fontFamily="@font/merriweather"
                     android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
@@ -196,13 +204,15 @@
                     android:textSize="18dp"
                     android:text="Miguel Isidoro"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/merriweather"
                     android:textStyle="bold"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Another lover of progressive rock  "
+                    android:text="Another lover of progressive rock"
+                    android:fontFamily="@font/merriweather"
                     android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
@@ -235,14 +245,15 @@
                     android:id="@+id/tv_account"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Account"
-                    android:textSize="22sp"
                     android:layout_marginStart="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/ic_next_1"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/merriweather"
+                    android:text="Account"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    app:layout_constraintEnd_toStartOf="@id/ic_next_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/ic_next_1"
@@ -266,6 +277,7 @@
                     android:layout_height="wrap_content"
                     android:text="Upload Highlights"
                     android:layout_marginStart="20dp"
+                    android:fontFamily="@font/merriweather"
                     android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ic_next_2"
@@ -295,6 +307,7 @@
                     android:layout_height="wrap_content"
                     android:text="Favourite Artists"
                     android:textSize="22sp"
+                    android:fontFamily="@font/merriweather"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ic_next_3"
                     app:layout_constraintTop_toTopOf="parent"
@@ -324,6 +337,7 @@
                     android:layout_height="wrap_content"
                     android:text="Start Live Event"
                     android:textSize="22sp"
+                    android:fontFamily="@font/merriweather"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ic_next_4"
                     app:layout_constraintTop_toTopOf="parent"
@@ -353,6 +367,7 @@
                     android:layout_height="wrap_content"
                     android:text="Statistics"
                     android:textSize="22sp"
+                    android:fontFamily="@font/merriweather"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ic_next_5"
                     app:layout_constraintTop_toTopOf="parent"
@@ -382,6 +397,7 @@
                     android:layout_height="wrap_content"
                     android:text="Premium"
                     android:textSize="22sp"
+                    android:fontFamily="@font/merriweather"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/ic_next_6"
                     app:layout_constraintTop_toTopOf="parent"
