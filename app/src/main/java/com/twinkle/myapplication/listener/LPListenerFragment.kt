@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.twinkle.myapplication.R
@@ -26,6 +27,10 @@ class LPListenerFragment : Fragment() {
         viewPager = view.findViewById(R.id.videosViewPager)
         viewPager.adapter = VideosPagerAdapter(this)
         viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
+
+        view.findViewById<AppCompatButton>(R.id.btn_donate).setOnClickListener {
+            DonationFragment().show(parentFragmentManager, "donation")
+        }
     }
 }
 
