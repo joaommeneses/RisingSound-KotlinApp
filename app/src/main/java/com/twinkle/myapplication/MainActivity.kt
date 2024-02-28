@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
                     val liveEventsDestId = if (userType == "Listener") {
                         R.id.fragmentListenerLandingPage
                     } else {
-                        R.id.fragmentMusicianLandingPage
+                        //R.id.fragmentMusicianLandingPage
+                        R.id.fragmentListenerLandingPage
                     }
                     navController.navigate(liveEventsDestId)
                     true
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         if(userType == "Listener"){
             navController.navigate(R.id.fragmentListenerLandingPage)
         }else{
-            navController.navigate(R.id.fragmentMusicianLandingPage)
+            navController.navigate(R.id.fragmentListenerLandingPage)
         }
     }
 }

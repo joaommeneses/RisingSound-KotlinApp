@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStartBroadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Broadcast"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:background="@drawable/btn_musician"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
+
+</RelativeLayout>
