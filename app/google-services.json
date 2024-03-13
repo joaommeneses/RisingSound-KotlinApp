@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "118052659354",
+    "project_id": "risingsound-70032",
+    "storage_bucket": "risingsound-70032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118052659354:android:d3702f802cd35aa9e4bf23",
+        "android_client_info": {
+          "package_name": "com.risingsound.kotlinapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD46fMHbgS39ypr6L_YjBKfDkTeoDsAIVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
