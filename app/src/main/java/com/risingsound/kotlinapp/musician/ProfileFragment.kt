@@ -41,6 +41,14 @@ class ProfileFragment : Fragment() {
 
             //requireActivity().finish()
         }
+
+        val clStatistics: ViewGroup = view.findViewById(R.id.cl_stats)
+        clStatistics.setOnClickListener {
+            val intent = Intent(activity, StatisticsActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
     }
 
     override fun onCreateView(
