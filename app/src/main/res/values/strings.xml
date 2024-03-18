@@ -1,4 +1,10 @@
 <resources>
+    <!-- Graph dropdown-->
+    <string-array name="graph_options">
+        <item>Listener Growth</item>
+        <item>Income</item>
+        <item>Expense vs Income</item>
+    </string-array>
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
