@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:entries="@array/graph_options"
         android:padding="10dp"
+        android:overlapAnchor="false"
         android:background="@color/white"/>
     </androidx.cardview.widget.CardView>
 

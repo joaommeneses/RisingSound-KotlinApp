@@ -50,6 +50,7 @@ class StatisticsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStatisticsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         chart = binding.chart
         spinnerGraphSelection = binding.spinnerGraphSelection
         setupSpinner()

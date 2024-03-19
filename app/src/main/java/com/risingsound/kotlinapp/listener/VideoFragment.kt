@@ -1,5 +1,6 @@
 package com.risingsound.kotlinapp.listener
 
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,8 +40,12 @@ class VideoFragment : Fragment() {
 
         videoView.setOnPreparedListener { mediaPlayer ->
             mediaPlayer.isLooping = true // Loop the video
+            mediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
             videoView.start()
         }
+
     }
+
+
 }
 
