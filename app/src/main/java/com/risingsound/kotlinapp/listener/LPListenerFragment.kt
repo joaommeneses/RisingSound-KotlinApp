@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.risingsound.kotlinapp.R
@@ -26,6 +27,10 @@ class LPListenerFragment : Fragment() {
         viewPager = view.findViewById(R.id.videosViewPager)
         viewPager.adapter = VideosPagerAdapter(this)
         viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
+
+        view.findViewById<AppCompatButton>(R.id.btn_donate).setOnClickListener {
+            openDonationPopup()
+        }
     }
 
     private fun showNotificationConsentDialog() {
@@ -39,6 +44,12 @@ class LPListenerFragment : Fragment() {
             }
             .setNegativeButton("No", null)
             .show()
+    }
+
+    private fun openDonationPopup() {
+        // Here, we're opening the DonationFragment as a dialog.
+        val donationFragment = DonationFragment() // Replace with your actual DonationFragment class name if different
+        donationFragment.show(parentFragmentManager, donationFragment.tag)
     }
 }
 

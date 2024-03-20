@@ -43,9 +43,6 @@ class VideoFragment : Fragment() {
             mediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
             videoView.start()
         }
-
     }
-
-
 }
 

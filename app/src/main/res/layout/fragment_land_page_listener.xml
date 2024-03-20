@@ -17,6 +17,20 @@
     app:layout_constraintEnd_toEndOf="parent"
     android:orientation="vertical"/>
 
+    <View
+        android:id="@+id/view_firstName"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/ll_user_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
     <LinearLayout
         android:id="@+id/ll_user_info"
         android:layout_width="match_parent"
@@ -27,17 +41,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal"
         android:gravity="center"
+        android:weightSum="1"
         android:padding="20dp"> <!-- Added padding for better layout -->
 
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:fontFamily="@font/merriweather"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Username"
-            android:textSize="22dp"
+            android:textAlignment="center"
+            android:text="joaommeneses"
+            android:textSize="18dp"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -48,6 +65,7 @@
             android:background="@drawable/btn_edit_profile_musician"
             android:text="Donate"
             android:textAllCaps="false"
+            android:layout_weight="0.3"
             android:textColor="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
