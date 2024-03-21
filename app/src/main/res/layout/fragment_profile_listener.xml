@@ -211,6 +211,7 @@
     app:layout_constraintBottom_toBottomOf="parent">
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_account_listener"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="25dp"
@@ -242,6 +243,7 @@
         android:layout_marginEnd="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_fav_artists_listener"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp">
@@ -272,6 +274,7 @@
             android:layout_marginEnd="20dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_live_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp">

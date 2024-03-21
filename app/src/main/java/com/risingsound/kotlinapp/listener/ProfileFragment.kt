@@ -1,11 +1,15 @@
 package com.risingsound.kotlinapp.listener
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.risingsound.kotlinapp.MainActivity
 import com.risingsound.kotlinapp.R
+import com.risingsound.kotlinapp.musician.LiveEventActivity
+import com.risingsound.kotlinapp.musician.PremiumActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +40,34 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile_listener, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val clAccount: ViewGroup = view.findViewById(R.id.cl_account_listener)
+        clAccount.setOnClickListener {
+            val intent = Intent(activity, AccountActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val clFavArtist: ViewGroup = view.findViewById(R.id.cl_fav_artists_listener)
+        clFavArtist.setOnClickListener {
+            val intent = Intent(activity, FavArtistsActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val clLiveEvents: ViewGroup = view.findViewById(R.id.cl_live_events)
+        clLiveEvents.setOnClickListener {
+            val intent = Intent(activity, LPListenerFragment::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
     }
 
     companion object {

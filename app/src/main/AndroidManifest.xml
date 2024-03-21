@@ -16,6 +16,12 @@
         android:theme="@style/Theme.MyApplication.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".listener.FavArtistsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".listener.AccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".musician.EditProfileActivity"
             android:exported="false" />
         <activity
