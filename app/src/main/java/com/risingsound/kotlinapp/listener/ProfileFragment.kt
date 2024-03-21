@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.risingsound.kotlinapp.MainActivity
 import com.risingsound.kotlinapp.R
+import com.risingsound.kotlinapp.musician.EditProfileActivity
 import com.risingsound.kotlinapp.musician.LiveEventActivity
 import com.risingsound.kotlinapp.musician.PremiumActivity
 
@@ -64,6 +66,14 @@ class ProfileFragment : Fragment() {
         val clLiveEvents: ViewGroup = view.findViewById(R.id.cl_live_events)
         clLiveEvents.setOnClickListener {
             val intent = Intent(activity, LPListenerFragment::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val btnEditProfile: Button = view.findViewById(R.id.btn_edit_profile)
+        btnEditProfile.setOnClickListener {
+            val intent = Intent(activity, EditProfileListenerActivity::class.java)
             startActivity(intent)
 
             //requireActivity().finish()
