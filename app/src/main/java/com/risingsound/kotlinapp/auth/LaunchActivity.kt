@@ -33,7 +33,7 @@ class LaunchActivity : AppCompatActivity() {
 
             // Log and toast
             Log.d(TAG, "FCM Token: $token")
-            Toast.makeText(baseContext, "FCM Token: $token", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(baseContext, "FCM Token: $token", Toast.LENGTH_SHORT).show()
         }
 
 

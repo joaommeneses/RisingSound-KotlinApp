@@ -14,11 +14,14 @@ import com.risingsound.kotlinapp.adapters.VideosPagerAdapter
 
 class LPListenerFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
+    private var consentedToNotification : Boolean = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        showNotificationConsentDialog()
+        if(!consentedToNotification){
+            showNotificationConsentDialog()
+        }
         return inflater.inflate(R.layout.fragment_land_page_listener, container, false)
     }
 

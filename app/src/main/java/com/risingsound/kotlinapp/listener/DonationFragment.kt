@@ -1,16 +1,26 @@
 package com.risingsound.kotlinapp.listener
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import com.risingsound.kotlinapp.R
 
+
 class DonationFragment : DialogFragment() {
+
+    var db = FirebaseFirestore.getInstance()
+    val donationsRef = db.collection("donations")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +40,43 @@ class DonationFragment : DialogFragment() {
         donationCardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
 
         view.findViewById<Button>(R.id.btn_donate_now).setOnClickListener {
-            // Here you can add the logic for donation
-            // For now, we'll just dismiss the fragment
-            dismiss()
-        }
+            val donationAmountString = view.findViewById<TextInputEditText>(R.id.et_value).text.toString()
+
+            // Check if the donation amount is not empty and is a valid number
+            val donationAmount = donationAmountString.toFloatOrNull()
+            if (!donationAmountString.isBlank() && donationAmount != null && donationAmount >= 1f) {
+                val donation = hashMapOf(
+                    "musicianId" to 1,  // Replace with actual musician's ID
+                    "listenerId" to 2,  // Replace with actual listener's ID
+                    "amount" to donationAmount,  // Use the actual donated amount
+                    "timestamp" to FieldValue.serverTimestamp()  // Timestamp of the donation
+                )
+                // Add the donation to Firestore
+                donationsRef.add(donation)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "DocumentSnapshot added with ID: ${donationsRef.id}")
+                        // Inform the user of a successful donation
+                        Toast.makeText(
+                            requireContext(),
+                            "Thank you for your donation!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        dismiss()  // Close the donation dialog
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(TAG, "Error adding document", e)
+                        // Inform the user that the donation failed
+                        Toast.makeText(
+                            requireContext(),
+                            "Donation failed, please try again.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            }
+            else {
+                    // Inform the user that the entered amount is not valid
+                    Toast.makeText(requireContext(), "Please enter a valid amount (minimum 1€).", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 }

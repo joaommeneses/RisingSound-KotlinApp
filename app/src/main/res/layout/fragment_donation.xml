@@ -11,15 +11,20 @@ android:layout_width="300dp"
     android:background="@color/white">
 
     <!-- Donation content -->
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 android:padding="16dp">
 
 <TextView
+    android:id="@+id/tv_support_artists"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/tv_support_artists_info"
     android:text="Support the Artist"
     android:textColor="@color/black"
     android:gravity="center"
@@ -28,25 +33,64 @@ android:padding="16dp">
     android:layout_marginBottom="16dp" />
 
 <TextView
+    android:id="@+id/tv_support_artists_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tv_support_artists"
+    app:layout_constraintBottom_toTopOf="@id/et_value"
     android:fontFamily="@font/merriweather"
     android:text="Your donation supports the artist's creative work."
     android:gravity="center"
     android:textColor="@color/black"
     android:layout_marginBottom="32dp" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_support_artists_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_donate_now"
+        android:hint="Value to donate"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:background="#E6E6E6"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/et_value"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/et_value"
+        app:layout_constraintBottom_toBottomOf="@id/et_value"
+        android:text="€"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="30dp" />
+
+
 <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/btn_donate_now"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/et_value"
+    app:layout_constraintBottom_toBottomOf="parent"
     android:background="@drawable/btn_listener"
     android:textColor="@color/white"
     android:textAllCaps="false"
     android:fontFamily="@font/merriweather"
     android:layout_marginStart="30dp"
     android:layout_marginEnd="30dp"
+    android:layout_marginTop="10dp"
     android:text="Donate Now" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

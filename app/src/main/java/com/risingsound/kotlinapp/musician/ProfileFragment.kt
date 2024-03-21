@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.risingsound.kotlinapp.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,6 +46,46 @@ class ProfileFragment : Fragment() {
         val clStatistics: ViewGroup = view.findViewById(R.id.cl_stats)
         clStatistics.setOnClickListener {
             val intent = Intent(activity, StatisticsActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val clAccount: ViewGroup = view.findViewById(R.id.cl_account)
+        clAccount.setOnClickListener {
+            val intent = Intent(activity, AccountActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val clUploadHl: ViewGroup = view.findViewById(R.id.cl_upload_hl)
+        clUploadHl.setOnClickListener {
+            val intent = Intent(activity, UploadHighlightsActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val clFavArtists: ViewGroup = view.findViewById(R.id.cl_fav_artists)
+        clFavArtists.setOnClickListener {
+            val intent = Intent(activity, FavArtistsActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val clPremium: ViewGroup = view.findViewById(R.id.cl_premium)
+        clPremium.setOnClickListener {
+            val intent = Intent(activity, PremiumActivity::class.java)
+            startActivity(intent)
+
+            //requireActivity().finish()
+        }
+
+        val btnEditProfile: Button = view.findViewById(R.id.btn_edit_profile)
+        btnEditProfile.setOnClickListener {
+            val intent = Intent(activity, EditProfileActivity::class.java)
             startActivity(intent)
 
             //requireActivity().finish()
