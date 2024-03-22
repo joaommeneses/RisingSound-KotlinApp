@@ -42,8 +42,18 @@ class SearchFragment : Fragment() {
             searchView.setQuery("", false)
             searchView.clearFocus()
         }
+
         setupSearchView()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val backButton = view.findViewById<ImageView>(com.risingsound.kotlinapp.R.id.iv_ic_back)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun setupSearchView() {

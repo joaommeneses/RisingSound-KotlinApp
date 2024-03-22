@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
 import com.github.mikephil.charting.data.Entry
 import androidx.appcompat.app.AppCompatActivity
@@ -55,6 +56,12 @@ class StatisticsActivity : AppCompatActivity() {
         spinnerGraphSelection = binding.spinnerGraphSelection
         setupSpinner()
         setupChart(listenerGrowthData, "Listener Growth") // Initial chart setup
+
+        val backButton = findViewById<ImageView>(com.risingsound.kotlinapp.R.id.iv_ic_back)
+
+        backButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setupSpinner() {

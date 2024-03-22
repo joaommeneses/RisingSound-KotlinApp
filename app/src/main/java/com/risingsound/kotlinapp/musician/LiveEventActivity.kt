@@ -2,10 +2,12 @@ package com.risingsound.kotlinapp.musician
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.risingsound.kotlinapp.R
 import com.risingsound.kotlinapp.databinding.ActivityLiveEventBinding
 
 class LiveEventActivity : AppCompatActivity() {
@@ -19,6 +21,12 @@ class LiveEventActivity : AppCompatActivity() {
 
         binding.btnStartBroadcast.setOnClickListener {
             toggleLiveBroadcast()
+        }
+
+        val backButton = findViewById<ImageView>(R.id.iv_ic_back)
+
+        backButton.setOnClickListener {
+            finish()
         }
     }
 

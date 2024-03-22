@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import com.risingsound.kotlinapp.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,6 +35,11 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val backButton = view.findViewById<ImageView>(R.id.iv_ic_back)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         val clStartEvent: ViewGroup = view.findViewById(R.id.cl_start_event)
         clStartEvent.setOnClickListener {

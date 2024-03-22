@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import com.risingsound.kotlinapp.MainActivity
 import com.risingsound.kotlinapp.R
 import com.risingsound.kotlinapp.musician.EditProfileActivity
@@ -40,12 +41,18 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile_listener, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val backButton = view.findViewById<ImageView>(R.id.iv_ic_back)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         val clAccount: ViewGroup = view.findViewById(R.id.cl_account_listener)
         clAccount.setOnClickListener {
