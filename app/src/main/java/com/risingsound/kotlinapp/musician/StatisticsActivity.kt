@@ -80,14 +80,17 @@ class StatisticsActivity : AppCompatActivity() {
                     0 -> {
                         setupChart(listenerGrowthData, "Listener Growth")
                         binding.tvGraph.text = "Listener Growth" // Change the graph title
+                        binding.tvGraph.setTextColor(Color.WHITE)
                     }
                     1 -> {
                         setupChart(connectionsGrowthData, "Connections Growth")
                         binding.tvGraph.text = "Connections Growth" // Change the graph title
+                        binding.tvGraph.setTextColor(Color.WHITE)
                     }
                     2 -> {
                         setupChart(donationIncomeData, "Donation Income")
                         binding.tvGraph.text = "Donation Income" // Change the graph title
+                        binding.tvGraph.setTextColor(Color.WHITE)
                     }
                 }
             }

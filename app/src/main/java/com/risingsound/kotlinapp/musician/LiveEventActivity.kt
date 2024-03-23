@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import android.Manifest
 import android.content.Context
+import android.graphics.PorterDuff
 import android.hardware.camera2.*
 import android.view.Surface
 import android.view.SurfaceHolder
@@ -39,14 +40,32 @@ class LiveEventActivity : AppCompatActivity() {
         binding = ActivityLiveEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        requestPermissionsIfNeeded()
+        setupListeners()
+
         cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
 
+        val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.ic_start_broadcast)?.mutate()
+        drawable?.setColorFilter(ContextCompat.getColor(applicationContext, android.R.color.white), PorterDuff.Mode.SRC_IN)
+        binding.btnStartBroadcast.setImageDrawable(drawable)
+    }
+
+    private fun requestPermissionsIfNeeded() {
+        if (!allPermissionsGranted()) {
+            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        } else {
+            // Permissions already granted, you can start camera preview here if needed immediately
+            // or wait for user action such as button click
+        }
+    }
+
+    private fun setupListeners() {
         binding.ivIcBack.setOnClickListener { finish() }
         binding.btnStartBroadcast.setOnClickListener {
             if (allPermissionsGranted()) {
                 toggleLiveBroadcast()
             } else {
-                ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                Toast.makeText(this, "Camera and microphone permissions are required", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -113,7 +132,9 @@ class LiveEventActivity : AppCompatActivity() {
                         session.setRepeatingRequest(previewRequestBuilder.build(), null, null)
                         runOnUiThread {
                             binding.tvLiveBanner.visibility = View.VISIBLE
-                            binding.btnStartBroadcast.setImageResource(R.drawable.baseline_pause_24)
+                            val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.baseline_pause_24)?.mutate()
+                            drawable?.setColorFilter(ContextCompat.getColor(applicationContext, android.R.color.white), PorterDuff.Mode.SRC_IN)
+                            binding.btnStartBroadcast.setImageDrawable(drawable)
                         }
                     } catch (e: CameraAccessException) {
                         Toast.makeText(this@LiveEventActivity, "Failed to start camera preview: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -135,7 +156,10 @@ class LiveEventActivity : AppCompatActivity() {
         cameraDevice?.close()
         cameraDevice = null
         binding.tvLiveBanner.visibility = View.GONE
-        binding.btnStartBroadcast.setImageResource(R.drawable.ic_start_broadcast)
+        val drawable = ContextCompat.getDrawable(applicationContext, R.drawable.ic_start_broadcast)?.mutate()
+        drawable?.setColorFilter(ContextCompat.getColor(applicationContext, android.R.color.white), PorterDuff.Mode.SRC_IN)
+        binding.btnStartBroadcast.setImageDrawable(drawable)
+
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
