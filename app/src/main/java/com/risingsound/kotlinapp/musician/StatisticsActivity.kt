@@ -21,7 +21,7 @@ class StatisticsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStatisticsBinding
     private var chart: LineChart? = null
     private var spinnerGraphSelection: Spinner? = null
-    val array = arrayOf("Listener Growth", "Connections Growth", "Donation income")
+    val array = arrayOf("Listener Growth", "Connections Growth", "Donation Income")
 
     private val listenerGrowthData = listOf(
         Entry(1f, 39f),
