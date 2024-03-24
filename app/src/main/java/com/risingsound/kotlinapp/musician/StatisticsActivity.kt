@@ -21,7 +21,7 @@ class StatisticsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStatisticsBinding
     private var chart: LineChart? = null
     private var spinnerGraphSelection: Spinner? = null
-    val array = arrayOf("Listener Growth", "Connections Growth", "Donation Income")
+    val array = arrayOf("Engagement Growth", "Connections Growth", "Donation Income")
 
     private val listenerGrowthData = listOf(
         Entry(1f, 39f),
@@ -55,7 +55,7 @@ class StatisticsActivity : AppCompatActivity() {
         chart = binding.chart
         spinnerGraphSelection = binding.spinnerGraphSelection
         setupSpinner()
-        setupChart(listenerGrowthData, "Listener Growth") // Initial chart setup
+        setupChart(listenerGrowthData, "Engagement Growth") // Initial chart setup
 
         val backButton = findViewById<ImageView>(com.risingsound.kotlinapp.R.id.iv_ic_back)
 
@@ -78,19 +78,19 @@ class StatisticsActivity : AppCompatActivity() {
                 // Based on the position, change the chart and title accordingly
                 when (position) {
                     0 -> {
-                        setupChart(listenerGrowthData, "Listener Growth")
-                        binding.tvGraph.text = "Listener Growth" // Change the graph title
-                        binding.tvGraph.setTextColor(Color.WHITE)
+                        setupChart(listenerGrowthData, "Engagement Growth")
+                        binding.tvGraph.text = "Engagement Growth" // Change the graph title
+                        binding.tvGraph.setTextColor(Color.BLACK)
                     }
                     1 -> {
                         setupChart(connectionsGrowthData, "Connections Growth")
                         binding.tvGraph.text = "Connections Growth" // Change the graph title
-                        binding.tvGraph.setTextColor(Color.WHITE)
+                        binding.tvGraph.setTextColor(Color.BLACK)
                     }
                     2 -> {
                         setupChart(donationIncomeData, "Donation Income")
                         binding.tvGraph.text = "Donation Income" // Change the graph title
-                        binding.tvGraph.setTextColor(Color.WHITE)
+                        binding.tvGraph.setTextColor(Color.BLACK)
                     }
                 }
             }
