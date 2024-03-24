@@ -47,7 +47,7 @@ class DonationFragment : DialogFragment() {
             if (!donationAmountString.isBlank() && donationAmount != null && donationAmount >= 1f) {
                 val donation = hashMapOf(
                     "musicianId" to 1,  // Replace with actual musician's ID
-                    "listenerId" to 2,  // Replace with actual listener's ID
+                    "listenerId" to "miguelisidoro__",  // Replace with actual listener's ID
                     "amount" to donationAmount,  // Use the actual donated amount
                     "timestamp" to FieldValue.serverTimestamp()  // Timestamp of the donation
                 )

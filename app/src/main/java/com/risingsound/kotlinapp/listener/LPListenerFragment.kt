@@ -6,22 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.risingsound.kotlinapp.AppContext
 import com.risingsound.kotlinapp.R
 import com.risingsound.kotlinapp.adapters.VideosPagerAdapter
 
 class LPListenerFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
-    private var consentedToNotification : Boolean = false
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if(!consentedToNotification){
-            showNotificationConsentDialog()
-        }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        checkNotificationConsent()
         return inflater.inflate(R.layout.fragment_land_page_listener, container, false)
     }
 
@@ -36,14 +31,25 @@ class LPListenerFragment : Fragment() {
         }
     }
 
+    private fun checkNotificationConsent() {
+        // Access the AppContext's instance and its consentNotification variable
+        val appContext = requireActivity().application as AppContext
+
+        if (appContext.consentNotification == false) {
+            showNotificationConsentDialog()
+        }
+    }
+
     private fun showNotificationConsentDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle("Enable Notifications")
             .setMessage("Would you like to receive notifications about new live events and updates?")
-            .setPositiveButton("Yes") { dialog, which ->
-                // User consented to receive notifications
-                // This is where you would either trigger FCM registration directly
-                // or flag the user's preference to enable it elsewhere in your app's flow
+            .setPositiveButton("Yes") { _, _ ->
+                // Set the consentNotification variable in AppContext to true
+                val appContext = requireActivity().application as AppContext
+                appContext.consentNotification = true
+
+                // Here, trigger FCM registration or flag user's preference
             }
             .setNegativeButton("No", null)
             .show()
@@ -55,4 +61,3 @@ class LPListenerFragment : Fragment() {
         donationFragment.show(parentFragmentManager, donationFragment.tag)
     }
 }
-

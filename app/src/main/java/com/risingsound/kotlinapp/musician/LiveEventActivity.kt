@@ -18,6 +18,7 @@ import android.hardware.camera2.*
 import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.TextureView
+import android.widget.TextView
 import com.risingsound.kotlinapp.R
 import com.risingsound.kotlinapp.databinding.ActivityLiveEventBinding
 import java.util.*
@@ -178,15 +179,15 @@ class LiveEventActivity : AppCompatActivity() {
         }
     }
 
-private fun startListeningForDonations() {
-        val musicianId = 1  // Assuming the musician's ID is 1 for demo purposes
-        val tenSecondsAgo = Timestamp.now().toDate().time - 10000  // Current time minus 10 seconds in milliseconds
+    private fun startListeningForDonations() {
+        val musicianId = 1
+        val tenSecondsAgo = Timestamp.now().toDate().time - 10000
         val tenSecondsAgoTimestamp = Timestamp(Date(tenSecondsAgo))
 
         val donationsRef = FirebaseFirestore.getInstance().collection("donations")
         donationListenerRegistration = donationsRef
             .whereEqualTo("musicianId", musicianId)
-            .whereGreaterThan("timestamp", tenSecondsAgoTimestamp)  // Query for donations in the last 10 seconds
+            .whereGreaterThan("timestamp", tenSecondsAgoTimestamp)
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
                     Toast.makeText(this, "Error listening to donation updates.", Toast.LENGTH_SHORT).show()
@@ -195,10 +196,20 @@ private fun startListeningForDonations() {
 
                 for (dc in snapshots?.documentChanges ?: emptyList()) {
                     if (dc.type == com.google.firebase.firestore.DocumentChange.Type.ADDED) {
-                        val listenerId = dc.document.getDouble("listenerId") ?: 0
+                        val listenerId = dc.document.getString("listenerId") ?: "Unknown"
                         val amount = dc.document.getDouble("amount") ?: 0.0
-                        // Ensure to convert to a more readable identifier or name for the listenerId if necessary
-                        Toast.makeText(this, "New donation from $listenerId: $amount€", Toast.LENGTH_LONG).show()
+
+                        val inflater = layoutInflater
+                        val layout = inflater.inflate(R.layout.toast_donation, findViewById(R.id.toast_donation_custom))
+
+                        val text = layout.findViewById(R.id.toast_text) as TextView
+                        text.text = "New donation from $listenerId: $amount€"
+
+                        with (Toast(applicationContext)) {
+                            duration = Toast.LENGTH_LONG
+                            view = layout
+                            show()
+                        }
                     }
                 }
             }
