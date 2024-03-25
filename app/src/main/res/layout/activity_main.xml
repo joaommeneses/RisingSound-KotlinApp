@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu"
-        app:itemIconTint="@color/black"
         android:background="@color/white"
         app:labelVisibilityMode="unlabeled"
         style="@style/Widget.MaterialComponents.BottomNavigationView"
-        app:itemIconSize="32dp" />
+        app:itemIconSize="32dp"
+        app:itemIconTint="@drawable/bottom_nav_color"/>
 </RelativeLayout>

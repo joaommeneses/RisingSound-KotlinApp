@@ -12,11 +12,11 @@ class VideosPagerAdapter(private val fragment: Fragment) : FragmentStateAdapter(
     // Replace R.raw.example with the actual ID of your video in the raw folder.
     private val videoResourceIds = listOf(
         R.raw.risingsound,
+        R.raw.sara_machado,
         R.raw.risingsound,
+        R.raw.sara_machado,
         R.raw.risingsound,
-        R.raw.risingsound,
-        R.raw.risingsound,
-        R.raw.risingsound,
+        R.raw.sara_machado,
         // The ID of your video in the raw folder
         // You can add more video IDs here if needed
     )

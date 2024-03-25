@@ -57,8 +57,9 @@ android:padding="16dp">
         android:hint="Value to donate"
         android:textAlignment="center"
         android:padding="10dp"
-        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:background="#E6E6E6"
+        android:textColor="@color/black"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp" />
 

@@ -70,6 +70,9 @@ class ProfileFragment : Fragment() {
             //requireActivity().finish()
         }
 
+        /*
+
+
         val clLiveEvents: ViewGroup = view.findViewById(R.id.cl_live_events)
         clLiveEvents.setOnClickListener {
             val intent = Intent(activity, LPListenerFragment::class.java)
@@ -77,7 +80,7 @@ class ProfileFragment : Fragment() {
 
             //requireActivity().finish()
         }
-
+ */
         val btnEditProfile: Button = view.findViewById(R.id.btn_edit_profile)
         btnEditProfile.setOnClickListener {
             val intent = Intent(activity, EditProfileListenerActivity::class.java)
