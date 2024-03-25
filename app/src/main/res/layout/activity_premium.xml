@@ -51,7 +51,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:background="@color/black"
+            android:background="@color/listener_color"
             android:padding="16dp" />
 
     </androidx.cardview.widget.CardView>
@@ -65,7 +65,7 @@
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="#E5E5E5"
+        app:cardBackgroundColor="#707080"
         app:layout_constraintTop_toBottomOf="@id/cv_premium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,22 +86,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="24dp"
                 android:textAlignment="center"
                 android:text="Earn more with RisingSound!" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/tv_cv_title"
+                app:layout_constraintBottom_toTopOf="@id/tv_first_feature"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
 
             <TextView
                 android:id="@+id/tv_first_feature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_cv_title"
+                app:layout_constraintTop_toBottomOf="@id/view_line"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:text="Zero Comissions - Get 100% of the money you earn!" />
             <TextView
@@ -113,9 +127,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="1 - Future additional feature" />
+                android:text="Additional features... - TBD" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -124,20 +138,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="2 - Second additional feature" />
+                android:text="Additional features... - TBD" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_subscribe_price"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Starting at €5"
-        android:backgroundTint="@color/black"
+        android:text="Starting at 𝕏€"
+        android:background="@drawable/btn_listener"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/cv_features"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +160,7 @@
         android:layout_marginBottom="32dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:padding="12dp"
+        android:padding="20dp"
         android:textSize="16sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
