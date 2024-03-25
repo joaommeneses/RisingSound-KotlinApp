@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import com.risingsound.kotlinapp.R
@@ -36,12 +37,26 @@ class VideoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         videoView = view.findViewById(R.id.videoView)
         val videoUri: String = arguments?.getString(ARG_VIDEO_URI) ?: return
+        videoView.setVideoURI(null)
         videoView.setVideoURI(Uri.parse(videoUri))
 
         videoView.setOnPreparedListener { mediaPlayer ->
             mediaPlayer.isLooping = true // Loop the video
             mediaPlayer.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
             videoView.start()
+        }
+
+        val likeButton: ImageView = view.findViewById(R.id.likeButton)
+        likeButton.setOnClickListener {
+            // Toggle between liked and not liked states
+            // This is just an example, adjust as per your logic and drawable resources
+            val isLiked = it.tag as? Boolean ?: false
+            if (isLiked) {
+                likeButton.setImageResource(R.drawable.baseline_favorite_border_24) // Not liked state
+            } else {
+                likeButton.setImageResource(R.drawable.baseline_favorite_24) // Liked state
+            }
+            it.tag = !isLiked
         }
     }
 }

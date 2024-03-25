@@ -29,4 +29,7 @@ class VideosPagerAdapter(private val fragment: Fragment) : FragmentStateAdapter(
         // Return a new instance of VideoFragment with the URI
         return VideoFragment.newInstance(videoUri)
     }
+
+
+
 }
