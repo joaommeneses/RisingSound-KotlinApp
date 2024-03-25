@@ -45,16 +45,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/iv_user_pfp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/user_pfp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/tv_username"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_username"/>
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_user_pfp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tv_username"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_username"
+                android:src="@drawable/joaosilva"
+                app:shapeAppearanceOverlay="@style/CircleShape"/>
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
@@ -67,7 +70,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:text="joaommeneses"
+            android:text="joaosilva__"
             android:textSize="20dp"
             />
 
