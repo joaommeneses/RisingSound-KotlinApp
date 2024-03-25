@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="listener_color">#7b2cbf</color>
     <color name="musician_color">#3A1F62</color>
+    <color name="logo_purple">#240046</color>
 </resources>
