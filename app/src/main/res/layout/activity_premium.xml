@@ -46,7 +46,7 @@
             android:id="@+id/tv_premium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Premium+"
+            android:text="Premium"
             android:gravity="center"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -108,7 +108,7 @@
 
             <TextView
                 android:id="@+id/tv_first_feature"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_line"
@@ -120,9 +120,9 @@
                 android:text="Zero Comissions - Get 100% of the money you earn!" />
             <TextView
                 android:id="@+id/tv_second_feature"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/tv_first_feature"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_first_feature"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="10dp"
@@ -131,9 +131,9 @@
                 android:textStyle="bold"
                 android:text="Additional features... - TBD" />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/tv_second_feature"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_second_feature"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="10dp"

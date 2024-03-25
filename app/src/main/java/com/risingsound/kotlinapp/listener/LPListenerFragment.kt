@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
@@ -26,8 +28,18 @@ class LPListenerFragment : Fragment() {
         viewPager.adapter = VideosPagerAdapter(this)
         viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
 
+
         view.findViewById<AppCompatButton>(R.id.btn_donate).setOnClickListener {
             openDonationPopup()
+        }
+
+        val appContext = activity?.application as AppContext
+        if (appContext.userType == "Musician") {
+            val tvUsername: TextView = view.findViewById(R.id.tv_username)
+            val ivUserProfile: ImageView = view.findViewById(R.id.iv_user_pfp)
+
+            tvUsername.text = "joaommeneses"
+            ivUserProfile.setImageResource(R.drawable.joaomeneses) // replace with actual drawable resource ID for joaomeneses
         }
     }
 

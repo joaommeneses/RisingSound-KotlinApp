@@ -3,7 +3,6 @@ package com.risingsound.kotlinapp.musician
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -14,13 +13,15 @@ import com.google.firebase.firestore.ListenerRegistration
 import android.Manifest
 import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.SurfaceTexture
 import android.hardware.camera2.*
+import android.util.Size
 import android.view.Surface
 import android.view.SurfaceHolder
-import android.view.TextureView
 import android.widget.TextView
 import com.risingsound.kotlinapp.R
 import com.risingsound.kotlinapp.databinding.ActivityLiveEventBinding
+import java.lang.Integer.signum
 import java.util.*
 
 class LiveEventActivity : AppCompatActivity() {
@@ -73,34 +74,39 @@ class LiveEventActivity : AppCompatActivity() {
 
     private fun toggleLiveBroadcast() {
         if (binding.tvLiveBanner.visibility == View.VISIBLE) {
+            stopListeningForDonations()
             stopCameraPreview()
         } else {
             startCameraPreview()
+            startListeningForDonations()
         }
     }
 
     private fun startCameraPreview() {
         try {
-            startListeningForDonations()
-            val cameraId = cameraManager.cameraIdList[0] // Choose the right camera ID as per your logic
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.CAMERA
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
+            val cameraId = cameraManager.cameraIdList[0]
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 return
             }
+
+            val characteristics = cameraManager.getCameraCharacteristics(cameraId)
+            val map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+                ?: throw RuntimeException("Cannot get available preview/video sizes")
+
+            val outputSizes = map.getOutputSizes(SurfaceTexture::class.java)
+            if (outputSizes.isNullOrEmpty()) {
+                throw RuntimeException("Cannot get available preview/video sizes")
+            }
+
+            // Select the largest available preview size
+            val previewSize = Collections.max(outputSizes.asList(), CompareSizesByArea())
+            val surface = binding.surfaceView.holder.setFixedSize(previewSize.width, previewSize.height)
+
+
             cameraManager.openCamera(cameraId, object : CameraDevice.StateCallback() {
                 override fun onOpened(camera: CameraDevice) {
                     cameraDevice = camera
-                    createPreviewSession()
+                    createPreviewSession(surface)
                 }
 
                 override fun onDisconnected(camera: CameraDevice) {
@@ -113,11 +119,25 @@ class LiveEventActivity : AppCompatActivity() {
                 }
             }, null)
         } catch (e: Exception) {
-            Toast.makeText(this, "Camera initialization failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Camera initialization failed: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun createPreviewSession() {
+    private class CompareSizesByArea : Comparator<Size> {
+        override fun compare(lhs: Size, rhs: Size) = signum((lhs.width.toLong() * lhs.height - rhs.width.toLong() * rhs.height).toInt())
+    }
+
+    private fun chooseOptimalSize(choices: Array<Size>?, aspectRatio: Double, screenSize: Size): Size {
+        val bigEnough = choices?.filter {
+            val previewAspectRatio = it.height.toDouble() / it.width.toDouble()
+            val isDesiredAspectRatio = Math.abs(previewAspectRatio - aspectRatio) < 0.1
+            val isDesiredResolution = it.height <= screenSize.height && it.width <= screenSize.width
+            isDesiredAspectRatio && isDesiredResolution
+        }
+        return bigEnough?.first() ?: choices?.first() ?: Size(1920, 1080)
+    }
+
+    private fun createPreviewSession(surfaceTexture: Unit) {
         val surfaceHolder: SurfaceHolder = binding.surfaceView.holder
         val surface: Surface = surfaceHolder.surface
 

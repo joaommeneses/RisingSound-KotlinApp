@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -56,27 +57,36 @@ class DonationFragment : DialogFragment() {
                     .addOnSuccessListener {
                         Log.d(TAG, "DocumentSnapshot added with ID: ${donationsRef.id}")
                         // Inform the user of a successful donation
-                        Toast.makeText(
-                            requireContext(),
-                            "Thank you for your donation!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        showCustomToast("Thank you for your donation!")
+
                         dismiss()  // Close the donation dialog
                     }
                     .addOnFailureListener { e ->
                         Log.w(TAG, "Error adding document", e)
                         // Inform the user that the donation failed
-                        Toast.makeText(
-                            requireContext(),
-                            "Donation failed, please try again.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        showCustomToast("Donation failed, try again!")
+                        dismiss()
                     }
             }
             else {
                     // Inform the user that the entered amount is not valid
-                    Toast.makeText(requireContext(), "Please enter a valid amount (minimum 1€).", Toast.LENGTH_SHORT).show()
+                showCustomToast("Please enter a valid amount (minimum 1€).")
                 }
             }
     }
-}
+
+    private fun showCustomToast(message: String) {
+        val inflater = layoutInflater
+        val layout =
+            inflater.inflate(R.layout.toast_donation, view!!.findViewById(R.id.toast_donation_custom))
+
+        val text = layout.findViewById<TextView>(R.id.toast_text)
+        text.text = message
+
+        with(Toast(context)) {
+            duration = Toast.LENGTH_LONG
+            view = layout
+            show()
+        }
+    }
+    }
